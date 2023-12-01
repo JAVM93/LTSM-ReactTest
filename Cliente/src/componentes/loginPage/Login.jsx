@@ -37,7 +37,7 @@ const Form = () => {
   const isLogin = pageType === "login";
 
   
-  const serverLogin ="http://localhost:3001/auth/login";
+  const serverLogin ="http://localhost:5000/auth/login";
   //const serverLogin ="http://172.16.4.107:3001/auth/login";
 
 
