@@ -1,0 +1,72 @@
+{!isNonMobileScreens && isMobileMenuToggled && (
+        <Box
+          position="fixed"
+          right="0"
+          bottom="0"
+          top="1.75rem"
+          height="100%"
+          zIndex="10"
+          maxWidth="6.25em"
+          minWidth="3.125em"
+          backgroundColor={background}
+        >
+          {/* CLOSE ICON */}
+          <FormControl variant="standard">
+            <Box display="flex" justifyContent="flex-end" p="1rem">
+              <IconButton
+                onClick={() => {
+                  setIsMobileMenuToggled(!isMobileMenuToggled);
+                }}
+              >
+                <Close />
+              </IconButton>
+            </Box>
+
+            {/* MENU ITEMS */}
+            <FlexBetween
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              gap="3rem"
+            >
+              <IconButton
+                onClick={() => dispatch(setMode())}
+                sx={{ fontSize: "25px" }}
+              >
+                {theme.palette.mode === "dark" ? (
+                  <DarkMode sx={{ fontSize: "25px" }} />
+                ) : (
+                  <LightMode sx={{ color: dark, fontSize: "25px" }} />
+                )}
+              </IconButton>
+              <MenuItem onClick={() => navigate("/home")}>
+                <Message sx={{ fontSize: "25px" }} />
+              </MenuItem>
+              <MenuItem>
+                <StyledBadge badgeContent={7} max={10}>
+                  <Notifications sx={{ fontSize: "25px" }} />
+                </StyledBadge>
+              </MenuItem>
+              <MenuItem onClick={() => navigate("/home")}>
+                <Help sx={{ fontSize: "25px" }} />
+              </MenuItem>
+              <MenuItem onClick={() => navigate("/home")}>
+                <ConstructionIcon sx={{ fontSize: "25px" }} />
+              </MenuItem>
+              <MenuItem onClick={() => navigate("/home")}>
+                <SummarizeIcon sx={{ fontSize: "25px" }} />
+              </MenuItem>
+              <MenuItem onClick={() => navigate("/home/register")}>
+                <GroupsIcon sx={{ fontSize: "25px" }} />
+              </MenuItem>
+              <MenuItem onClick={() => navigate("/home")}>
+                <CalendarMonthIcon sx={{ fontSize: "25px" }} />
+              </MenuItem>
+              <MenuItem onClick={() => dispatch(setLogout())}>
+                <LogoutIcon sx={{ fontSize: "25px" }} />
+              </MenuItem>
+            </FlexBetween>
+          </FormControl>
+        </Box>
+      )}
