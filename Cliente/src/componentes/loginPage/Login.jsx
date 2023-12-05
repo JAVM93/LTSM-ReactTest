@@ -1,4 +1,5 @@
 //import axios from "axios";
+import { useApi } from '../../context';
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -29,6 +30,7 @@ const initialValuesLogin = {
 };
 
 const Form = () => {
+  const { apiBaseUrl } = useApi();
   const [pageType] = useState("login");
   const { palette } = useTheme();
   const dispatch = useDispatch();
@@ -36,8 +38,8 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
 
-  
-  const serverLogin ="http://localhost:5000/auth/login";
+  //
+  const serverLogin =`${apiBaseUrl}/auth/login`;
   //const serverLogin ="http://172.16.4.107:3001/auth/login";
 
 

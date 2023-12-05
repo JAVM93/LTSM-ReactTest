@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useApi } from "../../context";
 import {
   Box,
   Button,
@@ -40,6 +41,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const RegForm = () => {
+  const { apiBaseUrl } = useApi();
   const [pageType, setPageType] = useState("register");
   const [rol, setRol] = useState("");
   const { palette } = useTheme();
@@ -47,7 +49,7 @@ const RegForm = () => {
   const isRegister = pageType === "register";
   const [open, setOpen] = React.useState(false);
   const [error, setErrorOpen] = React.useState(false);
-  const serverRegister = "http://localhost:3001/users/register";
+  const serverRegister = `${apiBaseUrl}/users/register`;
 
   const register = async (values, onSubmitProps) => {
     const savedUserResponse = await fetch(serverRegister, {
@@ -119,9 +121,7 @@ const RegForm = () => {
                   onChange={handleChange}
                   value={values.lastName}
                   name="lastName"
-                  error={
-                    Boolean(touched.lastName) && Boolean(errors.lastName)
-                  }
+                  error={Boolean(touched.lastName) && Boolean(errors.lastName)}
                   helpertext={touched.lastName && errors.lastName}
                   fullWidth
                 />
@@ -136,9 +136,7 @@ const RegForm = () => {
                     name="jobArea"
                     value={values.jobArea}
                     onChange={handleChange}
-                    error={
-                      Boolean(touched.jobArea) && Boolean(errors.jobArea)
-                    }
+                    error={Boolean(touched.jobArea) && Boolean(errors.jobArea)}
                     helpertext={touched.jobArea && errors.jobArea}
                   >
                     <MenuItem value="tecnologia">Tecnología</MenuItem>
@@ -240,4 +238,3 @@ const RegForm = () => {
 };
 
 export default RegForm;
-

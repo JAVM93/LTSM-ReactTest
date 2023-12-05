@@ -33,7 +33,7 @@ import { useNavigate } from "react-router-dom";
 import FlexBetween from "../components/FlexBetween";
 import "../estilos/addReport.css";
 import BadgeUnstyled, { badgeUnstyledClasses } from "@mui/base/BadgeUnstyled";
-import { BrowserRouter, Link } from "react-router-dom";
+//import { BrowserRouter, Link } from "react-router-dom";
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: "3.875em",
   height: "2.125em",

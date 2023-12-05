@@ -18,7 +18,8 @@ import { verifyToken } from "./middleware/auth.js";
 
 /*SWAGGER*/
 import swaggerUi from 'swagger-ui-express'; 
-import swaggerDocument from './swagger.json' assert { type: "json" };;
+//const swaggerDocument = require('./swagger.json');
+import swaggerDocument from './swagger.json' assert { type: "json" };
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -58,6 +59,7 @@ app.use("/report", reportRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
+mongoose.set('strictQuery', false);
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,

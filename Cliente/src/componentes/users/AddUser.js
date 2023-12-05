@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
- 
+ import { useApi } from "../../context";
+
 const AddUser = () => {
+  const { apiBaseUrl } = useApi();
   const [usercode, setusercode] = useState("");
   const [rol, setrol] = useState("");
   const [position, setposition] = useState("Male");
@@ -11,7 +13,7 @@ const AddUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/users", {
+      await axios.post(`${apiBaseUrl}/users`, {
         usercode,
         rol,
         position,
