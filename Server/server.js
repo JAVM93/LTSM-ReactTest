@@ -11,7 +11,7 @@ import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import reportRoutes from "./routes/report.js";
-// import { register } from "./controllers/auth.js";
+//import { register } from "./controllers/auth.js";
 import { createReport } from "./controllers/report.js";
 import { verifyToken } from "./middleware/auth.js";
 
