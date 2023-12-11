@@ -1,0 +1,41 @@
+html,
+body {
+  height: 100%;
+  align-items: center;
+  padding-top: 2.5em;
+  padding-bottom: 2.5em;
+
+}
+
+.formulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+
+}
+
+.form-signin {
+  max-width: 21.25em;
+  padding: 0.938em;
+}
+
+.form-signin .floatingInput:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -0.063em;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 0.625em;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.logo{
+    max-width: 7.625em;
+    height: 'auto';
+}
+

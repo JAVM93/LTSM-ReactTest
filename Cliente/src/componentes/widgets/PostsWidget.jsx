@@ -1,0 +1,65 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts } from "../state";
+import PostWidget from "./PostWidget";
+import { useApi } from "../../context";
+
+const PostsWidget = ({ userId, isProfile = false }) => {
+  const { apiBaseUrl } = useApi();
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts);
+  const token = useSelector((state) => state.token);
+
+  const getPosts = async () => {
+    const response = await fetch(`${apiBaseUrl}/report`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await response.json();
+    dispatch(setPosts({ posts: data }));
+  };
+
+  const getUserPosts = async () => {
+    const response = await fetch(
+      `${apiBaseUrl}/report/${userId}/report`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    const data = await response.json(); 
+    dispatch(setPosts({ posts: data }));
+  };
+
+  useEffect(() => {
+    if (isProfile) {
+      getUserPosts();
+    } else {
+      getPosts();
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <>
+      {posts.map(
+        ({
+          _id,
+          userId,
+          firstName,
+          lastName,
+          jobArea,
+        }) => (
+          <PostWidget
+            key={_id}
+            postId={_id}
+            postUserId={userId}
+            name={`${firstName} ${lastName}`}
+            jobArea={jobArea}
+          />
+        )
+      )}
+    </>
+  );
+};
+
+export default PostsWidget;
