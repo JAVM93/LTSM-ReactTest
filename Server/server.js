@@ -1,3 +1,9 @@
+/**
+ * @fileoverview This is the main server file for the application.
+ * It imports necessary modules, sets up configurations, defines routes, and connects to the MongoDB database.
+ * It also includes Swagger documentation for the API.
+ * @module server
+ */
 import apicache from "apicache";
 import express from "express";
 import bodyParser from "body-parser";

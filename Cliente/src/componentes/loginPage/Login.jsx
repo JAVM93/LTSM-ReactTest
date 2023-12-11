@@ -44,6 +44,7 @@ const Form = () => {
 
 
   const login = async (values, onSubmitProps) => {
+    console.log("Servidor API Login: ", serverLogin);
     const loggedInResponse = await fetch(
       serverLogin,
       {

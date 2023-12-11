@@ -1,8 +1,9 @@
-import User from "../models/User.js";
-import bcrypt from "bcrypt";
-import Joi from "joi";
-
-/* READ */
+/**
+ * Retrieves a user by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when the user is retrieved.
+ */
 export const getUser = async (req, res) => {
   try {
     const { id } = req.params;
@@ -13,9 +14,12 @@ export const getUser = async (req, res) => {
   }
 };
 
-
-/* UPDATE */
-
+/**
+ * Retrieves all users.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when all users are retrieved.
+ */
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find(); 
@@ -25,6 +29,12 @@ export const getUsers = async (req, res) => {
   }
 };
 
+/**
+ * Retrieves a user by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when the user is retrieved.
+ */
 export const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -34,6 +44,12 @@ export const getUserById = async (req, res) => {
   }
 };
 
+/**
+ * Updates a user by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when the user is updated.
+ */
 export const updateUser = async (req, res) => {
   try {
     const updateduser = await User.updateOne(
@@ -46,6 +62,12 @@ export const updateUser = async (req, res) => {
   }
 };
 
+/**
+ * Deletes a user by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when the user is deleted.
+ */
 export const deleteUser = async (req, res) => {
   try {
     const deleteduser = await User.deleteOne({ _id: req.params.id });
@@ -55,50 +77,12 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-// Definir la ruta para obtener la lista de usuarios
-/* export const getUserlist = async (req, res) => {
-  try {
-    const users = await User.find().select("usercode");
-    res.send(users);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error al obtener la lista de usuarios");
-  }
-}; */
-
-/* export const getUserlist = async (req, res) => {
-  try {
-    const { usercode } = req.params;
-    const users = await User.find({ usercode: usercode }).select("usercode");
-    res.send(users);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error al obtener la lista de usuarios");
-  }
-}; */
-
-/* REGISTER USER */
-/* export const register = async (req, res) => {
-  try {
-    const { firstName, lastName, usercode, password, rol, jobArea } = req.body;
-
-    const salt = await bcrypt.genSalt();
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    const newUser = new User({
-      firstName,
-      lastName,
-      usercode,
-      password: passwordHash,
-      rol,
-      jobArea,
-    });
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-}; */
+/**
+ * Registers a new user.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves when the user is registered.
+ */
 export const register = async (req, res) => {
   try {
     const schema = Joi.object({

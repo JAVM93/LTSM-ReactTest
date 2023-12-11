@@ -1,3 +1,7 @@
+/**
+ * Express router for report routes.
+ * @module routes/report
+ */
 import express from "express";
 import { createReport, getFeedReport, getUserReport} from "../controllers/report.js";
 import { verifyToken } from "../middleware/auth.js";

@@ -32,7 +32,7 @@ import { setMode, setLogout } from "../state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "../components/FlexBetween";
 import "../estilos/addReport.css";
-import BadgeUnstyled, { badgeUnstyledClasses } from "@mui/base/BadgeUnstyled";
+import { Badge } from "@mui/base/Badge";
 //import { BrowserRouter, Link } from "react-router-dom";
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: "3.875em",
@@ -90,7 +90,7 @@ const grey = {
   400: "#bdbdbd",
   900: "#24292f",
 };
-const StyledBadge = styled(BadgeUnstyled)(
+const StyledBadge = styled(Badge)(
   ({ theme }) => `
   box-sizing: border-box;
   margin: 0;
@@ -103,7 +103,7 @@ const StyledBadge = styled(BadgeUnstyled)(
   display: inline-block;
   line-height: 1;
 
-  & .${badgeUnstyledClasses.badge} {
+  & .${Badge.badge} {
     z-index: auto;
     position: absolute;
     top: 0;
@@ -125,7 +125,7 @@ const StyledBadge = styled(BadgeUnstyled)(
     transform: translate(50%, -50%);
     transform-origin: 100% 0;
   }
-  & .${badgeUnstyledClasses.invisible} {
+  & .${Badge.invisible} {
     display: none;
   }
   `

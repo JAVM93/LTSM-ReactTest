@@ -1,5 +1,10 @@
-import jwt from "jsonwebtoken";
-
+/**
+ * Middleware function to verify the authenticity of a token.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {void}
+ */
 export const verifyToken = async (req, res, next) => {
   try {
     let token = req.header("Authorization");
@@ -21,6 +26,13 @@ export const verifyToken = async (req, res, next) => {
   }
 };
 
+/**
+ * Middleware function to verify if the user is an admin.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {void}
+ */
 export const verifyAdmin = async (req, res, next) => {
   try {
     const { isAdmin } = req.user;
@@ -33,6 +45,13 @@ export const verifyAdmin = async (req, res, next) => {
   }
 }
 
+/**
+ * Middleware function to verify if the user has access to a specific resource.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {void}
+ */
 export const verifyUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
